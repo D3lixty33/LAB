@@ -1,6 +1,6 @@
-import handShake from "@/assets/images/webp/hand-shake.webp";
-import carSpeed from "@/assets/images/webp/car-speed.webp";
-import smilingGirl from "@/assets/images/webp/smiling-girl.webp";
+import handShake from "@/assets/images/webp/hand shake/desktop/hand-shake-desktop.webp";
+import carSpeed from "@/assets/images/webp/car-speed/desktop/car-speed-desktop.webp";
+import smilingGirl from "@/assets/images/webp/smiling-girl/desktop/smiling-girl-desktop.webp";
 import { v4 as uuidv4 } from "uuid";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";

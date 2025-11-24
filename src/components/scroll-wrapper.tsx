@@ -12,6 +12,9 @@ interface ScrollProps {
 
 export default function ScrollWrapper({ children }: ScrollProps) {
   useEffect(() => {
+
+    ScrollTrigger.normalizeScroll(true);
+
     // create smoother after DOM is ready
     const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",

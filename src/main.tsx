@@ -5,9 +5,7 @@ import App from "./App.tsx";
 import ScrollWrapper from "./components/scroll-wrapper";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
     <ScrollWrapper>
       <App />
     </ScrollWrapper>
-  </StrictMode>
 );

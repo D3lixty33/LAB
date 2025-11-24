@@ -1,5 +1,5 @@
-import family from "@/assets/images/webp/family.webp";
-import buisness from "@/assets/images/webp/buisness.webp";
+import family from "@/assets/images/webp/family/desktop/family-desktop.webp";
+import buisness from "@/assets/images/webp/buisness/desktop/buisness-desktop.webp";
 import { v4 as uuidv4 } from "uuid";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";

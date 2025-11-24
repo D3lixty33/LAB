@@ -1,6 +1,6 @@
-import lion from "@/assets/images/webp/lion.webp";
-import office from "@/assets/images/webp/office.webp";
-import lock from "@/assets/images/webp/lock.webp";
+import lion from "@/assets/images/webp/lion/desktop/lion-desktop.webp";
+import office from "@/assets/images/webp/office/desktop/office-desktop.webp";
+import lock from "@/assets/images/webp/lock/desktop/lock-desktop.webp";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
@@ -11,51 +11,59 @@ interface Image {
 }
 
 export default function Hero() {
-
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
 
-    let currentX = 0;
+    let currentX = 0;     // animated position
+    let targetX = 0;      // actual scroll target
+    const maxScroll = () => el.scrollWidth - el.clientWidth;
 
+    const setX = gsap.quickSetter(el, "x", "px");
+    const shadowSetter = gsap.quickSetter(".item-shadow", "opacity");
+
+    // -----------------------------
+    // Smooth scrolling loop (GSAP RAF)
+    // -----------------------------
+    gsap.ticker.add(() => {
+      currentX = gsap.utils.interpolate(currentX, targetX, 0.12); // smoothing
+      setX(currentX);
+    });
+
+    // -----------------------------
+    // Scroll handler
+    // -----------------------------
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
 
-      const scrollAmount = e.deltaY * 1.2;
-      currentX -= scrollAmount;
-
-      const maxScroll = el.scrollWidth - el.clientWidth;
-      currentX = Math.max(Math.min(currentX, 0), -maxScroll);
-
-      gsap.to(el, {
-        x: currentX,
-        duration: 0.8,
-        ease: "power3.out",
-      });
+      targetX -= e.deltaY * 1.1;
+      targetX = Math.max(Math.min(targetX, 0), -maxScroll());
     };
 
     el.addEventListener("wheel", handleWheel, { passive: false });
-
     return () => el.removeEventListener("wheel", handleWheel);
   }, []);
 
+  // -----------------------------
+  // Hover shadow optimization (GPU smooth)
+  // -----------------------------
   const handleMouseEnter = () => {
-    gsap.to(".item", {
-      boxShadow: "rgba(0, 0, 0, 0.24) 0px 5px 8px",
-      duration : 0.4,
-      ease : "power3.out"
-    })
-  }
+    gsap.to(".item-shadow", {
+      opacity: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
 
   const handleMouseLeave = () => {
-    gsap.to(".item" , {
-      boxShadow : "0 0 0 0px",
-      duration : 0.6,
-      ease : "power3.inOut"
-    })
-  }
+    gsap.to(".item-shadow", {
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.inOut",
+    });
+  };
 
   const images: Image[] = [
     { id: "1", src: lion, text: "LA VERA FORZA SI MISURA IN CIO CHE PROTEGGI" },
@@ -73,24 +81,31 @@ export default function Hero() {
 
   return (
     <>
-      <div 
+      <div
         ref={carouselRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="snap-mandatory flex space-x-4 p-4">
+        className="snap-mandatory flex space-x-4 p-4"
+      >
         {images.map((img) => (
           <div
             key={img.id}
             className="item snap-start relative flex-shrink-0 w-full h-[500px] rounded-lg overflow-hidden"
           >
+            {/* REAL IMAGE */}
             <img
               src={img.src}
               loading="lazy"
               alt={`slide-${img.id}`}
               className="w-full h-full object-cover"
             />
+
+            {/* GPU SHADOW OVERLAY */}
+            <div className="item-shadow absolute inset-0 bg-black opacity-0 pointer-events-none" />
+
+            {/* TEXT */}
             <div className="absolute inset-0 bg-grey-700 bg-opacity-40 flex items-center">
-              <h1 className="h1 text-white text-6xl font-bold pl-8" key={img.id}>
+              <h1 className="h1 text-white text-6xl font-bold pl-8">
                 {img.text}
               </h1>
             </div>
