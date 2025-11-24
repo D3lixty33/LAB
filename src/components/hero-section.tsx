@@ -1,6 +1,6 @@
-import lion from "@/assets/images/jpg/lion.jpg";
-import office from "@/assets/images/jpg/office.jpg";
-import lock from "@/assets/images/jpg/lock.jpg";
+import lion from "@/assets/images/webp/lion.webp";
+import office from "@/assets/images/webp/office.webp";
+import lock from "@/assets/images/webp/lock.webp";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
@@ -85,6 +85,7 @@ export default function Hero() {
           >
             <img
               src={img.src}
+              loading="lazy"
               alt={`slide-${img.id}`}
               className="w-full h-full object-cover"
             />

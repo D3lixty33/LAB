@@ -1,6 +1,6 @@
-import handShake from "@/assets/images/jpg/hand-shake.jpg";
-import carSpeed from "@/assets/images/jpg/car-speed.jpg";
-import smilingGirl from "@/assets/images/jpg/smiling-girl.jpg";
+import handShake from "@/assets/images/webp/hand-shake.webp";
+import carSpeed from "@/assets/images/webp/car-speed.webp";
+import smilingGirl from "@/assets/images/webp/smiling-girl.webp";
 import { v4 as uuidv4 } from "uuid";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -72,7 +72,7 @@ export default function Collaboration() {
             key={card.id}
             className="relative rounded-lg overflow-hidden w-full h-[300px]flex-shrink-0"
           >
-            <img src={card.img} className="w-full h-full object-cover" alt="" />
+            <img src={card.img} loading="lazy" className="w-full h-full object-cover" alt="" />
 
             <div className="absolute inset-0 text-white p-6 flex flex-col gap-4 bg-black/30">
               <h1 className="text-lg font-bold">{card.subtitle}</h1>

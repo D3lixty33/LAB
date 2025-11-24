@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { v4 as uuidv4 } from "uuid";
-import broker from "@/assets/images/jpg/broker.jpg";
+import broker from "@/assets/images/webp/broker.webp";
 import arrowDown from "@/assets/small-animations/arrow down.webm";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);

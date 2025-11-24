@@ -89,6 +89,7 @@ export default function Player() {
             {img.src && (
               <img
                 src={img.src}
+                loading="lazy"
                 alt={`slide-${img.id}`}
                 className="w-full h-full object-cover"
               />
