@@ -57,6 +57,10 @@ export default function Presentation() {
           toggleActions: "play none none reverse",
         },
       });
+
+      gsap.from(".video", {
+        
+      })
     }, comp);
 
     return () => ctx.revert(); // cleanup on unmount
@@ -102,13 +106,14 @@ export default function Presentation() {
         <div className="flex w-1/2">
           <h1 className="font-bold text-8xl who">CHI SIAMO</h1>
         </div>
-        <div className="flex w-1/2 items-center w-8 h-8 jutify-end">
-          <video autoPlay muted loop playsInline>
-            <source src={arrowDown} type="video/webm"></source>
-          </video>
+        <div className="flex w-1/2 justify-center items-center">
+          <div className="flex w-1/2 w-8 h-8">
+            <video autoPlay muted loop playsInline className="video">
+              <source src={arrowDown} type="video/webm"></source>
+            </video>
+          </div>
         </div>
       </div>
-
       <div className="flex w-full h-auto gap-8">
         {/* Image */}
         <div className="w-1/2 flex rounded-lg relative overflow-hidden img-flow">

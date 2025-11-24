@@ -1,4 +1,4 @@
-import lion from "@/assets/images/jpg/broker.jpg";
+import lion from "@/assets/images/jpg/lion.jpg";
 import office from "@/assets/images/jpg/office.jpg";
 import lock from "@/assets/images/jpg/lock.jpg";
 import gsap from "gsap";
