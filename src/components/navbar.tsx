@@ -1,6 +1,5 @@
 import React from "react";
-import logo from "@/assets/images/logo.png";
-import './styles/index.css'
+import logo from "@/assets/images/logo/logo.png";
 import gsap from "gsap";
 
 export default function Navbar() {
@@ -11,7 +10,7 @@ export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <nav className="flex grow items-center gap-16 justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-white relative transition-all">
+      <nav className="nav flex grow items-center gap-16 justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 bg-white relative transition-all">
         {/* Desktop Menu */}
         <div className="w-42 h-42 flex items-center flex-start">
           <img src={logo} alt="Logo" className="" />

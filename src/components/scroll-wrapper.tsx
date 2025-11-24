@@ -20,11 +20,13 @@ export default function ScrollWrapper({ children }: ScrollProps) {
       effects: true,
       smoothTouch: 0.1,
     });
-
+//    console.log(smoother)
     return () => {
       smoother.kill();
     };
   }, []);
+
+  
 
   return (
     <div id="smooth-wrapper">

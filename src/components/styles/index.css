@@ -1,20 +1,3 @@
-@font-face {
-  font-family: GTBold;
-  src: url('./assets/fonts/GT\ Walsheim\ Font/GT-Walsheim-Ultra-Bold-Trial-BF651b7fc6c21e5.otf');
-}
-
-@font-face {
-  font-family: GTRegular;
-  src: url('./assets/fonts/GT\ Walsheim\ Font/GT-Walsheim-Regular-Trial-BF651b7fc71a47d.otf');
-}
-
-.h1 {
-    font-family : "GTBold", sans-serif
-}
-
-.nav {
-  font-family: "GtRegular", sans-serif;
-}
 
 #smooth-wrapper {
   height: 100%;

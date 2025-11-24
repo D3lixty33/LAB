@@ -1,8 +1,7 @@
-import lion from "@/assets/images/lion.jpg";
-import office from "@/assets/images/office.jpg";
-import lock from "@/assets/images/lock.jpg";
+import lion from "@/assets/images/jpg/broker.jpg";
+import office from "@/assets/images/jpg/office.jpg";
+import lock from "@/assets/images/jpg/lock.jpg";
 import gsap from "gsap";
-import "./styles/index.css";
 import { useEffect, useRef } from "react";
 
 interface Image {
@@ -82,7 +81,7 @@ export default function Hero() {
         {images.map((img) => (
           <div
             key={img.id}
-            className="item snap-start relative flex-shrink-0 w-full h-[500px] bg-gray-200 rounded-lg overflow-hidden"
+            className="item snap-start relative flex-shrink-0 w-full h-[500px] rounded-lg overflow-hidden"
           >
             <img
               src={img.src}
@@ -90,7 +89,7 @@ export default function Hero() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-grey-700 bg-opacity-40 flex items-center">
-              <h1 className="text-white text-6xl font-bold pl-8" key={img.id}>
+              <h1 className="h1 text-white text-6xl font-bold pl-8" key={img.id}>
                 {img.text}
               </h1>
             </div>
