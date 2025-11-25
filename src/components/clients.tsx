@@ -13,6 +13,7 @@ interface ClientProps {
   subtitle: string;
   img: string; // <-- now store only the path
   text: string;
+  class? : string;
 }
 
 export default function Clients() {
@@ -22,6 +23,14 @@ export default function Clients() {
     const ctx = gsap.context(() => {
       const split = new SplitText(".collab", { type: "words" });
 
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".card",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
       gsap.from(split.words, {
         y: 40,
         opacity: 0,
@@ -30,10 +39,16 @@ export default function Clients() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".collab",
-          start: "top 80%",
+          start: "top 50%",
           toggleActions: "play none none reverse",
         },
       });
+
+
+      tl.addLabel(".card1")
+        .from(".card1", {  y: -250, opacity: 0, duration: 0.6 })
+        .addLabel(".card2")
+        .from(".card2", {  y: -350, opacity: 0, duration: 0.6 })
     }, comp);
 
     return () => ctx.revert();
@@ -43,12 +58,14 @@ export default function Clients() {
     {
       id: uuidv4(),
       img: family,
+      class : "card1",
       subtitle: "Privati",
       text: "Grazie alla professionalità derivante dall’esperienza pluriennale e al costante aggiornamento professionale offriamo ai nostri clienti consulenze ad hoc previa una attenta analisi e valutazione delle migliori soluzioni assicurative proposte dal mercato. L’obiettivo è di affiancare le famiglie nell’affrontare gli imprevisti dovuti alla gestione di sinistri attinenti dalla circolazione stradale , connessi ad abitazioni, condizioni di salute e previdenza in genere. Alcune delle nostre aree di competenza: Salute e Infortuni Abitazione Vita, Risparmio e Previdenza RCA Viaggi"
     },
     {
       id: uuidv4(),
       img: buisness,
+      class: "card2",
       subtitle: "Aziende",
       text: "Il broker è la figura prescelta dalla maggior parte degli imprenditori per affiancarli nella valutazione dei rischi al fine di trovare soluzioni idonee alla tutela delle aziende, per prevenire situazioni sempre più complesse che richiedono soluzioni altamente professionali. Obiettivo principale è quello di consentire alle aziende di rimanere al passo con i tempi guidando l’azienda nella gestione degli eventi che possano ostacolare, danneggiare ed interrompere il ciclo produttivo. Alcune delle nostre aree di competenza: Multirischi Aziende D&O e RC Professionale Key Man Car, Decennale Postuma"
     }
@@ -59,16 +76,16 @@ export default function Clients() {
       <div className="flex w-full justify-center items-center mb-10">
         <h1 className="font-bold text-8xl collab">A CHI CI RIVOLGIAMO</h1>
       </div>
-      <div className="flex w-full h-[500px] gap-16">
+      <div className="flex w-full h-[500px] gap-16 card">
         {collaborationCard.map((card) => (
           <div
             key={card.id}
-            className="relative rounded-lg overflow-hidden w-full h-[300px]flex-shrink-0"
+            className={`relative rounded-lg overflow-hidden w-full h-[300px]flex-shrink-0 ${card.class}`}
           >
             <img src={card.img} loading="lazy" className="w-full h-full object-cover" alt="" />
 
             <div className="absolute inset-0 text-white p-6 flex flex-col gap-4 bg-black/30">
-              <h1 className="text-lg font-bold">{card.subtitle}</h1>
+              <span className="font-regular text-4xl">{card.subtitle}</span>
               <p className="font-thin">{card.text}</p>
             </div>
           </div>

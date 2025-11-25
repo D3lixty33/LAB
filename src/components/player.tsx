@@ -73,7 +73,7 @@ export default function Player() {
   return (
     <>
       <div className="flex w-full h-auto p-4 justify-center">
-        <h1 className="font-bold text-8xl">I NOSTRI PLAYER</h1>
+        <h1 className="font-bold text-8xl player">I NOSTRI PLAYER</h1>
       </div>
       <div
         ref={carouselRef}
