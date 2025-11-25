@@ -59,7 +59,7 @@ export default function Clients() {
       <div className="flex w-full justify-center items-center mb-10">
         <h1 className="font-bold text-8xl collab">A CHI CI RIVOLGIAMO</h1>
       </div>
-      <div className="flex w-full h-auto gap-16">
+      <div className="flex w-full h-[500px] gap-16">
         {collaborationCard.map((card) => (
           <div
             key={card.id}

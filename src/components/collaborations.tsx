@@ -66,13 +66,13 @@ export default function Collaboration() {
       <div className="flex w-full justify-center items-center mb-10">
         <h1 className="font-bold text-8xl collab">COLLABORATORI</h1>
       </div>
-      <div className="flex w-full h-auto gap-16">
+      <div className="flex w-full h-[350px] gap-16">
         {collaborationCard.map((card) => (
           <div
             key={card.id}
             className="relative rounded-lg overflow-hidden w-full h-[300px]flex-shrink-0"
           >
-            <img src={card.img} loading="lazy" className="w-full h-full object-cover" alt="" />
+            <img src={card.img} loading="lazy" className="w-full object-cover" alt="" />
 
             <div className="absolute inset-0 text-white p-6 flex flex-col gap-4 bg-black/30">
               <h1 className="text-lg font-bold">{card.subtitle}</h1>
