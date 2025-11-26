@@ -70,12 +70,12 @@ export default function Hero() {
     {
       id: "2",
       src: office,
-      text: "LAB è una piattaforma tecnologica per collaborare nel gestire rischi",
+      text: "LAB E' UNA PIATTAFORMA PER COLLABORARE NELLA GESTIONE DEI RISCHI",
     },
     {
       id: "3",
       src: lock,
-      text: "Lab è Salute Casa Vita Risparmio Previdenza Auto Viaggi",
+      text: "LAB E' SALUTE CASA VITA RISPARMIO PREVIDENZA VIAGGI",
     },
   ];
 
@@ -105,7 +105,7 @@ export default function Hero() {
 
             {/* TEXT */}
             <div className="absolute inset-0 bg-grey-700 bg-opacity-40 flex items-center">
-              <h1 className="h1 text-white text-6xl font-bold pl-8 max-sm:text-5xl">
+              <h1 className="h1 text-white text-6xl font-bold pl-8 max-sm:text-3xl">
                 {img.text}
               </h1>
             </div>

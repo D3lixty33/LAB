@@ -1,8 +1,10 @@
-//import lion from "@/assets/images/jpg/lion.jpg";
-//import office from "@/assets/images/jpg/office.jpg";
-//import lock from "@/assets/images/jpg/lock.jpg";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
+import Allianz from '@/assets/images/svg/allianz-logo.svg'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 interface Image {
   id: string;
@@ -12,7 +14,31 @@ interface Image {
 
 export default function Player() {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const comp = useRef(null);
 
+  // TITLE ANIMATION
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const split = new SplitText(".title", { type: "words" });
+
+      gsap.from(split.words, {
+        y: 40,
+        opacity: 0,
+        stagger: 0.06,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".title",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    }, comp);
+
+    return () => ctx.revert();
+  }, []);
+
+  // CAROUSEL SCROLL
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
@@ -40,6 +66,7 @@ export default function Player() {
     return () => el.removeEventListener("wheel", handleWheel);
   }, []);
 
+  // HOVER EFFECTS
   const handleMouseEnter = () => {
     gsap.to(".item", {
       boxShadow: "rgba(0, 0, 0, 0.24) 0px 5px 8px",
@@ -57,7 +84,7 @@ export default function Player() {
   };
 
   const images: Image[] = [
-    { id: "1", src: "", text: "LA VERA FORZA SI MISURA IN CIO CHE PROTEGGI" },
+    { id: "1", src: Allianz, text: "" },
     {
       id: "2",
       src: "",
@@ -71,10 +98,15 @@ export default function Player() {
   ];
 
   return (
-    <>
+    <div ref={comp}>
+      {/* Title */}
       <div className="flex w-full h-auto p-4 justify-center">
-        <h1 className="font-bold text-8xl player max-sm:text-6xl">I NOSTRI PLAYER</h1>
+        <h1 className="font-bold text-8xl player max-sm:text-6xl title inline-block">
+          I NOSTRI PLAYER
+        </h1>
       </div>
+
+      {/* Carousel */}
       <div
         ref={carouselRef}
         onMouseEnter={handleMouseEnter}
@@ -84,28 +116,25 @@ export default function Player() {
         {images.map((img) => (
           <div
             key={img.id}
-            className="item snap-start relative flex-shrink-0 w-full h-[500px] rounded-lg overflow-hidden"
+            className="item snap-start relative flex-shrink-0 w-full h-[250px] rounded-lg overflow-hidden"
           >
             {img.src && (
               <img
                 src={img.src}
                 loading="lazy"
                 alt={`slide-${img.id}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fit"
               />
             )}
 
             <div className="absolute inset-0 bg-grey-700 bg-opacity-40 flex items-center">
-              <h1
-                className="h1 text-white text-6xl font-bold pl-8"
-                key={img.id}
-              >
+              <h1 className="h1 text-white text-6xl font-bold pl-8">
                 {img.text}
               </h1>
             </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
