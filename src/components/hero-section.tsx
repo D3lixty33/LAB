@@ -22,7 +22,7 @@ export default function Hero() {
     const maxScroll = () => el.scrollWidth - el.clientWidth;
 
     const setX = gsap.quickSetter(el, "x", "px");
-    const shadowSetter = gsap.quickSetter(".item-shadow", "opacity");
+  //  const shadowSetter = gsap.quickSetter(".item-shadow", "opacity");
 
     // -----------------------------
     // Smooth scrolling loop (GSAP RAF)
