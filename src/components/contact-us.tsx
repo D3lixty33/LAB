@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ContactUs() {
   return (
     <section className="w-full bg-white text-gray-900 py-20 px-6 md:px-12 lg:px-20">
