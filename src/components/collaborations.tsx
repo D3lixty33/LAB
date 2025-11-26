@@ -46,11 +46,11 @@ export default function Collaboration() {
       });
 
       tl.addLabel(".card1")
-        .from(".card1", {  x: 250, opacity: 0, duration: 0.6 })
+        .from(".card1", { x: 250, opacity: 0, duration: 0.6 })
         .addLabel(".card2")
-        .from(".card2", {  x: 350, opacity: 0, duration: 0.6 })
+        .from(".card2", { x: 350, opacity: 0, duration: 0.6 })
         .addLabel(".card3")
-        .from(".card3", {  x: 450, opacity: 0, duration: 0.6 });
+        .from(".card3", { x: 450, opacity: 0, duration: 0.6 });
     }, comp);
 
     return () => ctx.revert();
@@ -83,13 +83,16 @@ export default function Collaboration() {
   return (
     <div className="p-4 " ref={comp}>
       <div className="flex w-full justify-center items-center mb-10">
-        <h1 className="font-bold text-8xl collab">COLLABORATORI</h1>
+        <h1 className="font-bold text-8xl max-sm:text-4xl lg:text-8xl whitespace-normal">
+          COLLABORATORI
+        </h1>
       </div>
-      <div className="flex w-full h-[350px] gap-16 cards">
+
+      <div className="flex w-full h-[350px] gap-16 cards max-sm:flex-col max-sm:h-auto">
         {collaborationCard.map((card) => (
           <div
             key={card.id}
-            className={`relative rounded-lg overflow-hidden w-1/3 h-[300px] ${card.class}`}
+            className={`relative max-sm:w-full rounded-lg overflow-hidden w-1/3 h-[300px] max-sm:h-[500px] ${card.class}`}
           >
             <img
               src={card.img}

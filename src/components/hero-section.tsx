@@ -105,7 +105,7 @@ export default function Hero() {
 
             {/* TEXT */}
             <div className="absolute inset-0 bg-grey-700 bg-opacity-40 flex items-center">
-              <h1 className="h1 text-white text-6xl font-bold pl-8">
+              <h1 className="h1 text-white text-6xl font-bold pl-8 max-sm:text-5xl">
                 {img.text}
               </h1>
             </div>

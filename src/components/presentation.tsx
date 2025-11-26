@@ -105,14 +105,22 @@ export default function Presentation() {
   return (
     <div ref={comp} className="flex w-full flex-col gap-16 mt-4 p-4">
       {/* Title + Arrow section */}
-      <div className="flex w-full">
-        <div className="flex w-1/2">
-          <h1 className="font-bold text-8xl who will-animate">CHI SIAMO</h1>
+      <div className="flex w-full max-sm:flex-col gap-4">
+        <div className="flex w-1/2 max-sm:w-full">
+          <h1 className="font-bold text-8xl max-sm:text-5xl who will-animate">
+            CHI SIAMO
+          </h1>
         </div>
 
-        <div className="flex w-1/2 justify-center items-center">
+        <div className="flex w-1/2 max-sm:w-full justify-center items-center mt-0 sm:mt-6">
           <div className="w-8 h-8">
-            <video autoPlay muted loop playsInline className="video will-animate">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="video will-animate"
+            >
               <source src={arrowDown} type="video/webm" />
             </video>
           </div>
@@ -120,15 +128,18 @@ export default function Presentation() {
       </div>
 
       {/* Image + Text */}
-      <div className="flex w-full gap-8">
-        <div className="w-1/2 rounded-lg relative overflow-hidden img-flow will-animate">
-          <img src={broker} className="object-cover w-full h-full will-animate" />
+      <div className="flex w-full gap-8 max-sm:flex-col">
+        <div className="w-1/2 max-sm:w-full rounded-lg relative overflow-hidden img-flow will-animate">
+          <img
+            src={broker}
+            className="object-cover w-full h-full will-animate"
+          />
           <div className="absolute inset-0 bg-gray-200 opacity-20 flex items-center justify-center">
             <p className="text-white">Prova</p>
           </div>
         </div>
 
-        <div className="w-1/2 flex items-center">
+        <div className="w-1/2 flex items-center max-sm:w-full">
           {text.map((txt) => (
             <p
               key={txt.id}

@@ -74,13 +74,13 @@ export default function Clients() {
   return (
     <div className="p-4 " ref={comp}>
       <div className="flex w-full justify-center items-center mb-10">
-        <h1 className="font-bold text-8xl collab">A CHI CI RIVOLGIAMO</h1>
+        <h1 className="font-bold text-8xl collab max-sm:text-5xl">A CHI CI RIVOLGIAMO</h1>
       </div>
-      <div className="flex w-full h-[500px] gap-16 card">
+      <div className="flex w-full max-sm:flex-col max-sm:h-auto h-[500px] gap-16 card">
         {collaborationCard.map((card) => (
           <div
             key={card.id}
-            className={`relative rounded-lg overflow-hidden w-full h-[300px]flex-shrink-0 ${card.class}`}
+            className={`relative rounded-lg overflow-hidden w-full h-[300px] max-sm:h-[500px]  ${card.class}`}
           >
             <img src={card.img} loading="lazy" className="w-full h-full object-cover" alt="" />
 
